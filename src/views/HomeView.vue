@@ -15,8 +15,8 @@ export default {
 }
 </script>
 <style scoped>
-  .container-fluid{
-    padding-left: none !important;
+  .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl{
+    padding: 0;
   }
   .home{
     width:100vw;
@@ -45,7 +45,7 @@ export default {
     width:100px;
     padding:0.5em;
     background-color:aliceblue;
-    color:black;
+    color:gray;
     border-radius:20px;
     border:solid 1px rgb(190, 215, 57);
     transition:0.6s;

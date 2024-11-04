@@ -3,13 +3,13 @@ import axios from 'axios';
 
 export default createStore({
   state: {
-    client:null
+    client_request:null
   },
   getters: {
   },
   mutations: {
-    setClients(state, payload){
-      state.client = payload
+    setClientRequest(state, payload){
+      state.client_request = payload
     }
   },
   actions: {

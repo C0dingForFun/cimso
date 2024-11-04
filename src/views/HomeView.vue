@@ -2,7 +2,7 @@
   <div class="home">
     <div>
       <h1>Welcome</h1>
-      <input type="text" size="30" placeholder="Request Here..."/> 
+      <input type="text" size="30" placeholder="Request Here..."/><button>Send</button>
     </div>
   </div>
 </template>
@@ -30,5 +30,19 @@ export default {
   input{
     border-radius:20px ;
     padding:0.3em;
+  }
+  button{
+    width:100px;
+    padding:0.5em;
+    background-color:aliceblue;
+    color:black;
+    border-radius:20px;
+    border:solid 1px rgb(190, 215, 57);
+    transition:0.6s;
+  }
+  button:hover{
+    cursor: pointer;
+    background-color:rgb(190, 215, 57);
+    color:aliceblue;
   }
 </style>

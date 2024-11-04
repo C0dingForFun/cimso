@@ -1,5 +1,16 @@
-<template>
-  <div class="about">
-    <h1>This is an about page</h1>
+<template lang="">
+  <div>
+    <FetchData/>
   </div>
 </template>
+<script>
+import FetchData from '@/components/FetchData.vue'
+export default {
+  components:{
+    FetchData
+  }
+}
+</script>
+<style lang="">
+  
+</style>

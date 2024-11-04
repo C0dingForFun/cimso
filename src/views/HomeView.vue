@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="home">
       <div class="request">
-        <h1>Welcome</h1>
+        <h1 class="display-4">Welcome</h1>
         <input type="text" size="30" placeholder="Request Here..."/><button>Send</button>
       </div>
     </div>
@@ -32,6 +32,9 @@ export default {
   h1{
     color:aliceblue;
   }
+  .display-4{
+    font-weight:600 !important;
+  }
   input{
     border-radius:20px ;
     padding:0.3em;
@@ -47,7 +50,7 @@ export default {
     background-color:aliceblue;
     color:gray;
     border-radius:20px;
-    border:solid 1px rgb(190, 215, 57);
+    border:solid 1px gray;
     transition:0.6s;
   }
   button:hover{

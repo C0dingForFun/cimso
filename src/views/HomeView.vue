@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <div>
+  <div class="container">
+    <div class="request">
       <h1>Welcome</h1>
       <input type="text" size="30" placeholder="Request Here..."/><button>Send</button>
     </div>
@@ -13,8 +13,8 @@ export default {
 }
 </script>
 <style scoped>
-  .home{
-    width:100%;
+  .container{
+    width:100vw;
     height:100vh;
     background-image: url('https://www.cimso.com/wp-content/uploads/2020/03/cimso-management-software-2-scaled.jpg');
     background-position: center;
@@ -30,6 +30,11 @@ export default {
   input{
     border-radius:20px ;
     padding:0.3em;
+  }
+  .request{
+    background-color: rgb(190, 215, 57, 0.6);
+    padding:150px;
+    border-radius:20px;
   }
   button{
     width:100px;

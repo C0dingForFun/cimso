@@ -1,6 +1,6 @@
 <template>
     <div>
-         {{getUnitTypes}}
+         
     </div>
 </template>
 <script>

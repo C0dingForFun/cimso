@@ -1,6 +1,8 @@
 import { createStore } from 'vuex';
 import axios from 'axios';
 
+const cimso_api = 'https://demo.ix.cimsoweb.com/'
+
 export default createStore({
   state: {
     client_request:null

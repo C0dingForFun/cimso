@@ -11,6 +11,11 @@ const routes = [
     path: '/singleView',
     name: 'singleView',
     component: () => import( '../views/SingleView.vue')
+  },
+  {
+    path: '/fetchData',
+    name: 'fetchData',
+    component: () => import( '../components/FetchData.vue')
   }
 ]
 

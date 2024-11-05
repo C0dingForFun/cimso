@@ -1,15 +1,16 @@
 <template>
     <div>
       <h1>Unit Types</h1>
-      <ul>
+      <button @click="showUnitType()">Show Unit Types</button><button @click="showBookingUnit()">Show Booking Unit</button>
+      <ul v-show="checkUnitType">
         <li v-for="unitType in unitTypes" :key="unitType['Unit Type ID']">
           <h2>{{ unitType['Unit Type Description'] }} ({{ unitType['Unit Type Code'] }})</h2>
           <p>Category: {{ unitType['Unit Type Category'] }}</p>
           <p>Max Occupants: {{ unitType['Maximum Occupants'] }}</p>
           <p>Marketing Description: {{ unitType['Marketing Description'] }}</p>
           <p>Units Available: {{ unitType['Unit Count'] }}</p>
-  
-          <ul>
+        
+          <ul v-show="checkBookingUnit">
             <li v-for="unit in bookingUnits[unitType['Unit Type ID']] || []" :key="unit['Booking Unit ID']">
               <p>Booking Unit Name: {{ unit['Booking Unit Name'] }}</p>
               <p>Room Number: {{ unit['Booking Unit Number'] }}</p>
@@ -18,6 +19,7 @@
         </li>
       </ul>
     </div>
+    div
   </template>
   
   <script>
@@ -30,7 +32,17 @@
       return {
         unitTypes: [],
         bookingUnits: {},
+        checkUnitType:false,
+        checkBookingUnit:false
       };
+    },
+    methods:{
+        showUnitType(){
+            this.checkUnitType = !this.checkUnitType
+        },
+        showBookingUnit(){
+            this.checkBookingUnit = !this.checkBookingUnit
+        }
     },
     async created() {
       try {

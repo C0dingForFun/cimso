@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <FetchData />
+      <FetchData />
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import FetchData from '../components/FetchData.vue'
 export default {
   components: {
     FetchData,
-  },
+  }
 };
 </script>
 

@@ -1,11 +1,11 @@
 <template>
     <div>
       <h1>CiMSO INNterchange</h1>
-      <input type="text" size="80" placeholder="Request Here..." v-model="search"/><button class="send">Send</button>
+      <input type="text" size="40" placeholder="Request Here..." v-model="search"/><button class="send">Send</button>
       <div class="mt-2">
         <button @click="showUnitType()">Show Unit List</button> <button @click="showUnitType()">Show Unit Types</button> <button @click="showBookingUnit()">Show Booking Unit</button> 
       </div>
-      <table class="table mt-2" v-show="checkUnitType"> 
+      <table class="table mt-2 unit-type-table" v-show="checkUnitType"> 
         <thead class="table-dark">
             <tr>
                 <th>Unit Type ID</th>
@@ -169,5 +169,116 @@
         background-color:rgb(190, 215, 57);
         color:aliceblue;
     }
+    @media (max-width: 768px) {
+    .unit-type-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .unit-type-table thead {
+      display: none;
+    }
+    .unit-type-table tr {
+      display: block;
+      margin-bottom: 10px;
+      border-bottom: 3px solid rgb(190, 215, 57);
+    }
+    .unit-type-table td {
+      display: block;
+      text-align: right;
+      font-size: 13px;
+      border-bottom: 1px solid rgb(190, 215, 57);
+      padding: 30px;
+      position: relative;
+    }
+    .unit-type-table td:before {
+      content: attr(data-label);
+      float: left;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    .unit-type-table td:last-child {
+      border-bottom: 0;
+    }
+    .unit-type-table td:nth-child(1):before {
+      content: "UserID";
+    }
+    .unit-type-table td:nth-child(2):before {
+      content: "User Name";
+    }
+    .unit-type-table td:nth-child(3):before {
+      content: "Quantity";
+    }
+    .unit-type-table td:nth-child(4):before {
+      content: "Amount";
+    }
+    .unit-type-table td:nth-child(5):before {
+      content: "Category";
+    }
+    .unit-type-table td:nth-child(6):before {
+      content: "Product URL";
+    }
+    .unit-type-table td:nth-child(7):before {
+      content: "Action";
+    }
+    .unit-type-table td:nth-child(8):before {
+      content: "Action";
+    }
+    .unit-type-table td:nth-child(9):before {
+      content: "Action";
+    }
+  }
+  /* Responsive Styles for Products Table */
+  @media (max-width: 768px) {
+    .rooms-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .rooms-table thead {
+      display: none;
+    }
+    .rooms-table tr {
+      display: block;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+    }
+    .rooms-table td {
+      display: block;
+      text-align: right;
+      font-size: 13px;
+      border-bottom: 1px dotted #ccc;
+      padding: 10px;
+      position: relative;
+    }
+    .rooms-table td:before {
+      content: attr(data-label);
+      float: left;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    .rooms-table td:last-child {
+      border-bottom: 0;
+    }
+    .rooms-table td:nth-child(1):before {
+      content: "Product ID";
+    }
+    .rooms-table td:nth-child(2):before {
+      content: "Product Name";
+    }
+    .rooms-table td:nth-child(3):before {
+      content: "Quantity";
+    }
+    .rooms-table td:nth-child(4):before {
+      content: "Amount";
+    }
+    .rooms-table td:nth-child(5):before {
+      content: "Category";
+    }
+    .rooms-table td:nth-child(6):before {
+      content: "Product URL";
+    }
+    .rooms-table td:nth-child(7):before {
+      content: "Action";
+    }
+  }
   </style>
   

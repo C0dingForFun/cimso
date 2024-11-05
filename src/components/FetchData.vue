@@ -22,6 +22,8 @@
   
   <script>
   import { getUnitTypes, getBookingUnits } from '../services/api.js';
+  import { toast } from "vue3-toastify";
+  import "vue3-toastify/dist/index.css";
   
   export default {
     data() {
@@ -46,9 +48,16 @@
           }
           acc[unit['Unit Type ID']].push(unit);
           return acc;
+
         }, {});
       } catch (error) {
-        console.error('Error fetching data:', error);
+        toast("Error fetching data", {
+                "theme": "dark",
+                "type": "error",
+                "dangerouslyHTMLString": true,
+                autoClose: 2000,
+                position: toast.POSITION.BOTTOM_CENTER,
+            })
       }
     },
   };

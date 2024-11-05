@@ -1,13 +1,12 @@
 import axios from 'axios';
 
-const cimso_API = 'https://demo.ix.cimsoweb.com';
+const cimso_API = '/api';
 
 const headers = {
   Authorization: JSON.stringify({
     "Client Login ID":"CiMSO.dev",
     "Client Password":"CiMSO.dev",
     "hg_pass":"nGXUF1i^57I^ao^o",
-    "allow":"POST"
   }),
   'Content-Type': 'application/json',
 };
@@ -18,7 +17,6 @@ export const getUnitTypes = async () => {
     { hg_code: "demo", payload: {} },
     { headers }
   );
-  console.log(response.data.payload);
   
   return response.data.payload["Unit Types"];
 };

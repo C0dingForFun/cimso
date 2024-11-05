@@ -71,9 +71,11 @@
     methods: {
         showUnitType(){
             this.checkUnitType = !this.checkUnitType
+            this.checkBookingUnit = false;
         },
         showBookingUnit(){
             this.checkBookingUnit = !this.checkBookingUnit
+            this.checkUnitType = false;
         }
     },
     async created() {
@@ -86,12 +88,12 @@
         this.unitTypes = unitTypesData;
   
         // Organize booking units by Unit Type ID for easy access
-        this.bookingUnits = bookingUnitsData.reduce((acc, unit) => {
-          if (!acc[unit['Unit Type ID']]) {
-            acc[unit['Unit Type ID']] = [];
+        this.bookingUnits = bookingUnitsData.reduce((book, unit) => {
+          if (!book[unit['Unit Type ID']]) {
+            book[unit['Unit Type ID']] = [];
           }
-          acc[unit['Unit Type ID']].push(unit);
-          return acc;
+          book[unit['Unit Type ID']].push(unit);
+          return book;
         }, {});
       } catch (error) {
         toast("Error fetching data", {

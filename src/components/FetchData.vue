@@ -5,7 +5,7 @@
       <div class="mt-2">
         <button @click="showUnitType()">Show Unit List</button> <button @click="showUnitType()">Show Unit Types</button> <button @click="showBookingUnit()">Show Booking Unit</button> 
       </div>
-      <table class="table mt-5" v-show="checkUnitType"> 
+      <table class="table mt-2" v-show="checkUnitType"> 
         <thead class="table-dark">
             <tr>
                 <th>Unit Type ID</th>
@@ -87,7 +87,6 @@
         showBookingUnit(){
             this.checkBookingUnit = !this.checkBookingUnit
             this.checkUnitType = false;
-            this.checkBookingUnit = false;
             this.checkUnitList = false;
         }
     },

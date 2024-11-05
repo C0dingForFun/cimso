@@ -1,24 +1,47 @@
 <template>
     <div>
       <h1>Unit Types</h1>
-      <button @click="showUnitType()">Show Unit Types</button>
-      <ul>
-        <li v-for="unitType in unitTypes" :key="unitType['Unit Type ID']" v-show="checkUnitType">
+      <button @click="show()">Show Unit Types</button>
+      <table class="table mt-2" v-show="check"> 
+        <thead class="table-dark">
+            <tr>
+                <th>Unit Type ID</th>
+                <th>Unit Type Description</th>
+                <th>Unit Type Code</th>
+                <th>Unit Type Category'</th>
+                <th>Maximum Occupants</th>
+                <th>Marketing Description</th>
+                <th>Unit Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="unitType in unitTypes" :key="unitType['Unit Type ID']">
+                <td>{{ unitType['Unit Type ID']}}</td>
+                <td>{{ unitType['Unit Type Description'] }}</td>
+                <td>{{ unitType['Unit Type Code'] }}</td>
+                <td>{{ unitType['Unit Type Category'] }}</td>
+                <td>{{ unitType['Maximum Occupants'] }}</td>
+                <td>{{ unitType['Marketing Description'] }}</td>
+                <td>{{ unitType['Unit Count'] }}</td>
+            </tr>
+        </tbody>
+      </table>
+      <!-- <ul>
+        <li v-for="unitType in unitTypes" :key="unitType['Unit Type ID']">
           <h2>{{ unitType['Unit Type Description'] }} ({{ unitType['Unit Type Code'] }})</h2>
           <p>Category: {{ unitType['Unit Type Category'] }}</p>
           <p>Max Occupants: {{ unitType['Maximum Occupants'] }}</p>
           <p>Marketing Description: {{ unitType['Marketing Description'] }}</p>
-          <p>Units Available: {{ unitType['Unit Count'] }}</p>
-        
-        </li>
-    </ul>
-    <button @click="showBookingUnit()">Show Booking Unit</button>
-        <ul v-for="unitType in unitTypes" :key="unitType['Unit Type ID']">
-        <li v-for="unit in bookingUnits[unitType['Unit Type ID']] || []" :key="unit['Booking Unit ID']" v-show="checkBookingUnit">
-            <p>Booking Unit Name: {{ unit['Booking Unit Name'] }}</p>
-            <p>Room Number: {{ unit['Booking Unit Number'] }}</p>
-        </li>
-        </ul>
+          <p>Units Available: {{ unitType['Unit Count'] }}</p> -->
+  
+          <!-- <ul>
+            <li v-for="unit in bookingUnits[unitType['Unit Type ID']] || []" :key="unit['Booking Unit ID']">
+              <p>Booking Unit Name: {{ unit['Booking Unit Name'] }}</p>
+              <p>Room Number: {{ unit['Booking Unit Number'] }}</p>
+            </li>
+          </ul> -->
+        <!-- </li>
+      </ul> -->
     </div>
   </template>
   
@@ -32,16 +55,12 @@
       return {
         unitTypes: [],
         bookingUnits: {},
-        checkUnitType:false,
-        checkBookingUnit:false
+        check:false
       };
     },
-    methods:{
-        showUnitType(){
-            this.checkUnitType = !this.checkUnitType
-        },
-        showBookingUnit(){
-            this.checkBookingUnit = !this.checkBookingUnit
+    methods: {
+        show(){
+            this.check = !this.check
         }
     },
     async created() {
@@ -60,7 +79,6 @@
           }
           acc[unit['Unit Type ID']].push(unit);
           return acc;
-
         }, {});
       } catch (error) {
         toast("Error fetching data", {
@@ -83,16 +101,6 @@
   h2 {
     font-size: 1.5em;
     margin-top: 1em;
-  }
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  li {
-    margin-bottom: 1em;
-    padding: 1em;
-    border: 1px solid #ddd;
-    border-radius: 5px;
   }
   </style>
   

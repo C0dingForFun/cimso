@@ -58,7 +58,7 @@
   </template>
   
   <script>
-  import { getUnitTypes, getBookingUnits } from '../services/api.js';
+  import { getUnitTypes, getBookingUnits } from '../store/index.js';
   import { toast } from "vue3-toastify";
   import "vue3-toastify/dist/index.css";
   

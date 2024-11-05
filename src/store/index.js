@@ -1,43 +1,44 @@
 import { createStore } from 'vuex';
 import axios from 'axios';
 
-const API_BASE_URL = 'https://demo.ix.cimsoweb.com';
+const cimso_API = '/api';
 
 const headers = {
   Authorization: JSON.stringify({
-    Connection: 'keep-alive',
-    allow: 'GET',
-
+    "Client Login ID":"CiMSO.dev",
+    "Client Password":"CiMSO.dev",
+    "hg_pass":"nGXUF1i^57I^ao^o",
   }),
   'Content-Type': 'application/json',
-  'Content-Length': 31
 };
 
-const getUnitTypes = async () => {
-
+export const getUnitTypes = async () => {
   const response = await axios.post(
-    `${API_BASE_URL}/unit_type_info_request`,
+    `${cimso_API}/unit_type_info_request`,
     { hg_code: "demo", payload: {} },
     { headers }
   );
   
   return response.data.payload["Unit Types"];
+};
 
-}
+export const getBookingUnits = async () => {
+  const response = await axios.post(
+    `${cimso_API}/get_booking_units_request`,
+    { hg_code: "demo", payload: {} },
+    { headers }
+  );
+  return response.data.payload["Booking Units"];
+};
 
 export default createStore({
   state: {
-    client_request:null
   },
   getters: {
   },
   mutations: {
-    setClientRequest(state, payload){
-      state.client_request = payload
-    }
   },
   actions: {
-
   },
   modules: {
   }

@@ -1,7 +1,10 @@
 <template>
     <div>
       <h1>Welcome to CiMSO INNterchange</h1>
-      <button @click="showUnitType()">Show Unit Types</button> <button @click="showBookingUnit()">Show Booking Unit</button>
+      <input type="text" size="30" placeholder="Request Here..." v-model="search"/><button class="send">Send</button>
+      <div>
+          <button @click="showUnitType()">Show Unit Types</button> <button @click="showBookingUnit()">Show Booking Unit</button>
+      </div>
       <table class="table mt-2" v-show="checkUnitType"> 
         <thead class="table-dark">
             <tr>
@@ -65,7 +68,8 @@
         unitTypes: [],
         bookingUnits: {},
         checkUnitType:false,
-        checkBookingUnit:false
+        checkBookingUnit:false,
+        search:''
       };
     },
     methods: {
@@ -109,14 +113,14 @@
   </script>
   
   <style scoped>
-  h1 {
-    font-size: 2em;
-    margin-bottom: 1em;
-  }
-  h2 {
-    font-size: 1.5em;
-    margin-top: 1em;
-  }
+    h1 {
+        font-size: 2em;
+        margin-bottom: 1em;
+    }
+    h2 {
+        font-size: 1.5em;
+        margin-top: 1em;
+    }
     table td {
         padding: 0.5rem;
         border: 2px solid rgb(190, 215, 57);
@@ -124,6 +128,24 @@
     table th {
         padding: 0.5rem;
         border: 2px solid rgb(190, 215, 57);
+    }
+    input{
+        border-radius:20px ;
+        padding:0.3em;
+    }
+    .send{
+        width:100px;
+        padding:0.5em;
+        background-color:aliceblue;
+        color:gray;
+        border-radius:20px;
+        border:solid 1px gray;
+        transition:0.6s;
+    }
+    .send:hover{
+        cursor: pointer;
+        background-color:rgb(190, 215, 57);
+        color:aliceblue;
     }
   </style>
   

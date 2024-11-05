@@ -30,7 +30,7 @@
         </tbody>
       </table>
  
-      <table class="table mt-2" v-show="checkBookingUnit"> 
+      <table class="table mt-2 booking-unit-table" v-show="checkBookingUnit"> 
         <thead class="table-dark">
             <tr>
                 <th>Booking Unit ID</th>
@@ -229,55 +229,43 @@
   }
   /* Responsive Styles for Products Table */
   @media (max-width: 768px) {
-    .rooms-table {
+    .booking-unit-table {
       width: 100%;
       border-collapse: collapse;
     }
-    .rooms-table thead {
+    .booking-unit-table thead {
       display: none;
     }
-    .rooms-table tr {
+    .booking-unit-table tr {
       display: block;
       margin-bottom: 10px;
-      border: 1px solid #ddd;
+      border-bottom: 3px solid rgb(190, 215, 57);
     }
-    .rooms-table td {
+    .booking-unit-table td {
       display: block;
       text-align: right;
       font-size: 13px;
-      border-bottom: 1px dotted #ccc;
-      padding: 10px;
+      border-bottom: 1px solid rgb(190, 215, 57);
+      padding: 30px;
       position: relative;
     }
-    .rooms-table td:before {
+    .booking-unit-table td:before {
       content: attr(data-label);
       float: left;
       text-transform: uppercase;
       font-weight: bold;
     }
-    .rooms-table td:last-child {
+    .booking-unit-table td:last-child {
       border-bottom: 0;
     }
-    .rooms-table td:nth-child(1):before {
+    .booking-unit-table td:nth-child(1):before {
       content: "Product ID";
     }
-    .rooms-table td:nth-child(2):before {
+    .booking-unit-table td:nth-child(2):before {
       content: "Product Name";
     }
-    .rooms-table td:nth-child(3):before {
+    .booking-unit-table td:nth-child(3):before {
       content: "Quantity";
-    }
-    .rooms-table td:nth-child(4):before {
-      content: "Amount";
-    }
-    .rooms-table td:nth-child(5):before {
-      content: "Category";
-    }
-    .rooms-table td:nth-child(6):before {
-      content: "Product URL";
-    }
-    .rooms-table td:nth-child(7):before {
-      content: "Action";
     }
   }
   </style>

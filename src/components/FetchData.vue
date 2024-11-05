@@ -1,25 +1,25 @@
 <template>
     <div>
       <h1>Unit Types</h1>
-      <button @click="showUnitType()">Show Unit Types</button><button @click="showBookingUnit()">Show Booking Unit</button>
-      <ul v-show="checkUnitType">
-        <li v-for="unitType in unitTypes" :key="unitType['Unit Type ID']">
+      <button @click="showUnitType()">Show Unit Types</button>
+      <ul>
+        <li v-for="unitType in unitTypes" :key="unitType['Unit Type ID']" v-show="checkUnitType">
           <h2>{{ unitType['Unit Type Description'] }} ({{ unitType['Unit Type Code'] }})</h2>
           <p>Category: {{ unitType['Unit Type Category'] }}</p>
           <p>Max Occupants: {{ unitType['Maximum Occupants'] }}</p>
           <p>Marketing Description: {{ unitType['Marketing Description'] }}</p>
           <p>Units Available: {{ unitType['Unit Count'] }}</p>
         
-          <ul v-show="checkBookingUnit">
-            <li v-for="unit in bookingUnits[unitType['Unit Type ID']] || []" :key="unit['Booking Unit ID']">
-              <p>Booking Unit Name: {{ unit['Booking Unit Name'] }}</p>
-              <p>Room Number: {{ unit['Booking Unit Number'] }}</p>
-            </li>
-          </ul>
         </li>
-      </ul>
+    </ul>
+    <button @click="showBookingUnit()">Show Booking Unit</button>
+        <ul v-for="unitType in unitTypes" :key="unitType['Unit Type ID']">
+        <li v-for="unit in bookingUnits[unitType['Unit Type ID']] || []" :key="unit['Booking Unit ID']" v-show="checkBookingUnit">
+            <p>Booking Unit Name: {{ unit['Booking Unit Name'] }}</p>
+            <p>Room Number: {{ unit['Booking Unit Number'] }}</p>
+        </li>
+        </ul>
     </div>
-    div
   </template>
   
   <script>

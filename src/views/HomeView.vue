@@ -2,8 +2,10 @@
   <div class="container-fluid">
     <div class="home">
       <div class="request">
-        <h1 class="display-4">Welcome</h1>
-        <input type="text" size="30" placeholder="Request Here..."/><button>Send</button>
+        <h1 class="display-4">Welcome To CiMSO INNterchange</h1>
+        <div class="mt-5">
+          <router-link to="/singleView">Request Units</router-link>
+        </div>
       </div>
     </div>
     </div>
@@ -44,16 +46,17 @@ export default {
     padding:150px;
     border-radius:20px;
   }
-  button{
+  a{
     width:100px;
-    padding:0.5em;
+    padding:1em;
     background-color:aliceblue;
     color:gray;
+    text-decoration: none;
     border-radius:20px;
     border:solid 1px gray;
     transition:0.6s;
   }
-  button:hover{
+  a:hover{
     cursor: pointer;
     background-color:rgb(190, 215, 57);
     color:aliceblue;

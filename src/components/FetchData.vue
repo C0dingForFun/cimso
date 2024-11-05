@@ -1,11 +1,11 @@
 <template>
     <div>
-      <h1>Welcome to CiMSO INNterchange</h1>
-      <input type="text" size="30" placeholder="Request Here..." v-model="search"/><button class="send">Send</button>
-      <div>
-          <button @click="showUnitType()">Show Unit Types</button> <button @click="showBookingUnit()">Show Booking Unit</button>
+      <h1>CiMSO INNterchange</h1>
+      <input type="text" size="80" placeholder="Request Here..." v-model="search"/><button class="send">Send</button>
+      <div class="mt-2">
+        <button @click="showUnitType()">Show Unit Types List</button> <button @click="showUnitType()">Show Unit Types</button> <button @click="showBookingUnit()">Show Booking Unit</button> 
       </div>
-      <table class="table mt-2" v-show="checkUnitType"> 
+      <table class="table mt-5" v-show="checkUnitType"> 
         <thead class="table-dark">
             <tr>
                 <th>Unit Type ID</th>
@@ -143,6 +143,20 @@
         transition:0.6s;
     }
     .send:hover{
+        cursor: pointer;
+        background-color:rgb(190, 215, 57);
+        color:aliceblue;
+    }
+    button{
+        width:200px;
+        padding:0.5em;
+        background-color:aliceblue;
+        color:gray;
+        border-radius:20px;
+        border:solid 1px gray;
+        transition:0.6s;
+    }
+    button:hover{
         cursor: pointer;
         background-color:rgb(190, 215, 57);
         color:aliceblue;

@@ -152,9 +152,7 @@
           getBookingUnits(),
         ]);
   
-        console.log(this.unitTypes);
         this.unitTypes = unitTypesData;
-        
   
         this.bookingUnits = bookingUnitsData.reduce((book, unit) => {
           if (!book[unit['Unit Type ID']]) {

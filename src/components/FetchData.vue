@@ -25,7 +25,7 @@
         </ul>
       </div>
     <div v-else>
-        
+        <SpinnerComp/>
     </div>
 
       <table class="table mt-2 unit-type-table" v-show="checkUnitType"> 
@@ -89,6 +89,9 @@
         checkBookingUnit:false,
         search:''
       };
+    },
+    components:{
+        SpinnerComp
     },
     methods: {
         showUnitList(){

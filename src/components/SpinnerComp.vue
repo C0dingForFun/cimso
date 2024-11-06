@@ -1,13 +1,15 @@
-<template lang="">
-    <div class="pinwheel">
-        <div class="pinwheel__line"></div>
-        <div class="pinwheel__line"></div>
-        <div class="pinwheel__line"></div>
-        <div class="pinwheel__line"></div>
-        <div class="pinwheel__line"></div>
-        <div class="pinwheel__line"></div>
+<template>
+    <div class="spinner">
+        <div class="pinwheel">
+            <div class="pinwheel__line"></div>
+            <div class="pinwheel__line"></div>
+            <div class="pinwheel__line"></div>
+            <div class="pinwheel__line"></div>
+            <div class="pinwheel__line"></div>
+            <div class="pinwheel__line"></div>
+        </div>
+        <h2>Loading...</h2>
     </div>
-    <h2>Loading...</h2>
 </template>
 <script>
 export default {
@@ -15,6 +17,13 @@ export default {
 }
 </script>
 <style scoped>
+    .spinner{
+        width:100vw;
+        height:80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     h2{
     margin-left:5px;
     }
@@ -25,9 +34,6 @@ export default {
     --uib-color: #312f2b;
     --uib-line-weight: 4px;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: var(--uib-size);
     width: var(--uib-size);
     }

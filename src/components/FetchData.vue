@@ -6,27 +6,23 @@
         <button @click="showUnitList()">Show Unit List</button> <button @click="showUnitType()">Show Unit Types</button> <button @click="showBookingUnit()">Show Booking Unit</button> 
       </div>
 
-      <div v-if="showUnitList()">
-          <ul class="mt-2" v-show="checkUnitList" >
+        <ul class="mt-2" v-show="checkUnitList" >
             <li v-for="unitType in unitTypes" :key="unitType['Unit Type ID']">
-              <h2>{{ unitType['Unit Type Description'] }} ({{ unitType['Unit Type Code'] }})</h2>
-              <p>Category: {{ unitType['Unit Type Category'] }}</p>
-              <p>Max Occupants: {{ unitType['Maximum Occupants'] }}</p>
-              <p>Marketing Description: {{ unitType['Marketing Description'] }}</p>
-              <p>Units Available: {{ unitType['Unit Count'] }}</p>
-      
-              <ul>
-                <li v-for="unit in bookingUnits[unitType['Unit Type ID']] || []" :key="unit['Booking Unit ID']">
-                  <p>Booking Unit Name: {{ unit['Booking Unit Name'] }}</p>
-                  <p>Room Number: {{ unit['Booking Unit Number'] }}</p>
-                </li>
-              </ul>
+                <h2>{{ unitType['Unit Type Description'] }} ({{ unitType['Unit Type Code'] }})</h2>
+                <p>Category: {{ unitType['Unit Type Category'] }}</p>
+                <p>Max Occupants: {{ unitType['Maximum Occupants'] }}</p>
+                <p>Marketing Description: {{ unitType['Marketing Description'] }}</p>
+                <p>Units Available: {{ unitType['Unit Count'] }}</p>
+            
+                <ul>
+                    <li v-for="unit in bookingUnits[unitType['Unit Type ID']] || []" :key="unit['Booking Unit ID']">
+                    <p>Booking Unit Name: {{ unit['Booking Unit Name'] }}</p>
+                    <p>Room Number: {{ unit['Booking Unit Number'] }}</p>
+                    </li>
+                </ul>
             </li>
-        </ul>
-      </div>
-    <div v-else>
-        <SpinnerComp/>
-    </div>
+          </ul>
+        </div>
 
       <table class="table mt-2 unit-type-table" v-show="checkUnitType"> 
         <thead class="table-dark">

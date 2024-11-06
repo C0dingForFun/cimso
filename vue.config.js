@@ -3,10 +3,10 @@ module.exports = defineConfig({
   transpileDependencies: true,
   devServer:{
     proxy:{
-      '/api':{
+      'https://demo.ix.cimsoweb.com':{
         target: 'https://demo.ix.cimsoweb.com',
         changeOrigin: true,
-        pathRewrite: {'^/api': ''},
+        pathRewrite: {'^https://demo.ix.cimsoweb.com': ''},
       }
     }
   }

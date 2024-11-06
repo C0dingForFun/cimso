@@ -19,6 +19,7 @@ export const getUnitTypes = async () => {
     { headers }
   );
   
+  console.log(response.data.payload["Unit Types"]);
   return response.data.payload["Unit Types"];
 };
 

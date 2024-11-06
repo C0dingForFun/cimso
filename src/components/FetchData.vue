@@ -1,70 +1,77 @@
 <template>
     <div>
       <h1 class="mt-5">CiMSO INNterchange</h1>
-      <router-link to="/" class="my-2">Back to Home</router-link><input type="text" size="40" placeholder="Request Here..." v-model="search" class="mx-2 my-2"/><button class="send my-2">Send</button>
+      <router-link to="/" class="my-2">Back to Home</router-link>
+      <input type="text" size="40" placeholder="Search by Unit Type ID, Booking Unit ID, or Unit Type Code..." v-model="searchQuery" class="mx-2 my-2"/>
+      <button class="send my-2">Send</button>
+      
       <div class="mt-2">
-        <button @click="showUnitList()">Show Unit List</button> <button @click="showUnitType()">Show Unit Types</button> <button @click="showBookingUnit()">Show Booking Unit</button> 
+        <button @click="showUnitList()">Show Unit List</button> 
+        <button @click="showUnitType()">Show Unit Types</button> 
+        <button @click="showBookingUnit()">Show Booking Unit</button> 
       </div>
       
-        <ul class="mt-4 unitList" v-show="checkUnitList">
-            <li v-for="unitType in unitTypes" :key="unitType['Unit Type ID']">
-                <h2>{{ unitType['Unit Type Description'] }} ({{ unitType['Unit Type Code'] }})</h2>
-                <p>Category: {{ unitType['Unit Type Category'] }}</p>
-                <p>Max Occupants: {{ unitType['Maximum Occupants'] }}</p>
-                <p>Marketing Description: {{ unitType['Marketing Description'] }}</p>
-                <p>Units Available: {{ unitType['Unit Count'] }}</p>
-            
-                <ul >
-                    <li class="bookingUnit" v-for="unit in bookingUnits[unitType['Unit Type ID']] || []" :key="unit['Booking Unit ID']">
-                    <p>Booking Unit Name: {{ unit['Booking Unit Name'] }}</p>
-                    <p>Room Number: {{ unit['Booking Unit Number'] }}</p>
-                    </li>
-                </ul>
+      <!-- Unit List -->
+      <ul class="mt-4 unitList" v-show="checkUnitList">
+        <li v-for="unitType in filteredUnitTypes" :key="unitType['Unit Type ID']">
+          <h2>{{ unitType['Unit Type Description'] }} ({{ unitType['Unit Type Code'] }})</h2>
+          <p>Category: {{ unitType['Unit Type Category'] }}</p>
+          <p>Max Occupants: {{ unitType['Maximum Occupants'] }}</p>
+          <p>Marketing Description: {{ unitType['Marketing Description'] }}</p>
+          <p>Units Available: {{ unitType['Unit Count'] }}</p>
+          
+          <ul>
+            <li class="bookingUnit" v-for="unit in filteredBookingUnits[unitType['Unit Type ID']] || []" :key="unit['Booking Unit ID']">
+              <p>Booking Unit Name: {{ unit['Booking Unit Name'] }}</p>
+              <p>Room Number: {{ unit['Booking Unit Number'] }}</p>
             </li>
           </ul>
-
-      <table class="table mt-4 unit-type-table" v-show="checkUnitType"> 
+        </li>
+      </ul>
+  
+      <!-- Unit Type Table -->
+      <table class="table mt-4 unit-type-table" v-show="checkUnitType">
         <thead class="table-dark">
-            <tr>
-                <th>Unit Type ID</th>
-                <th>Unit Type Description</th>
-                <th>Unit Type Code</th>
-                <th>Unit Type Category'</th>
-                <th>Maximum Occupants</th>
-                <th>Marketing Description</th>
-                <th>Unit Count</th>
-            </tr>
+          <tr>
+            <th>Unit Type ID</th>
+            <th>Unit Type Description</th>
+            <th>Unit Type Code</th>
+            <th>Unit Type Category</th>
+            <th>Maximum Occupants</th>
+            <th>Marketing Description</th>
+            <th>Unit Count</th>
+          </tr>
         </thead>
         <tbody>
-            <tr v-for="unitType in unitTypes" :key="unitType['Unit Type ID']">
-                <td>{{ unitType['Unit Type ID']}}</td>
-                <td>{{ unitType['Unit Type Description'] }}</td>
-                <td>{{ unitType['Unit Type Code'] }}</td>
-                <td>{{ unitType['Unit Type Category'] }}</td>
-                <td>{{ unitType['Maximum Occupants'] }}</td>
-                <td>{{ unitType['Marketing Description'] }}</td>
-                <td>{{ unitType['Unit Count'] }}</td>
-            </tr>
+          <tr v-for="unitType in filteredUnitTypes" :key="unitType['Unit Type ID']">
+            <td>{{ unitType['Unit Type ID']}}</td>
+            <td>{{ unitType['Unit Type Description'] }}</td>
+            <td>{{ unitType['Unit Type Code'] }}</td>
+            <td>{{ unitType['Unit Type Category'] }}</td>
+            <td>{{ unitType['Maximum Occupants'] }}</td>
+            <td>{{ unitType['Marketing Description'] }}</td>
+            <td>{{ unitType['Unit Count'] }}</td>
+          </tr>
         </tbody>
       </table>
- 
-      <table class="table mt-4 booking-unit-table" v-show="checkBookingUnit"> 
+  
+      <!-- Booking Unit Table -->
+      <table class="table mt-4 booking-unit-table" v-show="checkBookingUnit">
         <thead class="table-dark">
-            <tr>
-                <th>Booking Unit ID</th>
-                <th>Booking Unit Name</th>
-                <th>Booking Unit Number</th>
-            </tr>
+          <tr>
+            <th>Booking Unit ID</th>
+            <th>Booking Unit Name</th>
+            <th>Booking Unit Number</th>
+          </tr>
         </thead>
-        <tbody  v-for="unitType in unitTypes" :key="unitType['Unit Type ID']">
-            <tr v-for="unit in bookingUnits[unitType['Unit Type ID']] || []" :key="unit['Booking Unit ID']">
-                <td>{{ unit['Booking Unit ID']}}</td>
-                <td>{{ unit['Booking Unit Name'] }}</td>
-                <td>{{ unit['Booking Unit Number'] }}</td>
-            </tr>
+        <tbody v-for="unitType in filteredUnitTypes" :key="unitType['Unit Type ID']">
+          <tr v-for="unit in filteredBookingUnits[unitType['Unit Type ID']] || []" :key="unit['Booking Unit ID']">
+            <td>{{ unit['Booking Unit ID']}}</td>
+            <td>{{ unit['Booking Unit Name'] }}</td>
+            <td>{{ unit['Booking Unit Number'] }}</td>
+          </tr>
         </tbody>
-      </table>  
-      
+      </table>
     </div>
   </template>
   
@@ -79,31 +86,58 @@
       return {
         unitTypes: [],
         bookingUnits: {},
-        checkUnitList:true,
-        checkUnitType:false,
-        checkBookingUnit:false,
-        search:''
+        checkUnitList: true,
+        checkUnitType: false,
+        checkBookingUnit: false,
+        searchQuery: '',
       };
     },
-    components:{
-        SpinnerComp
+    components: {
+      SpinnerComp
     },
     methods: {
-        showUnitList(){
-            this.checkUnitList = !this.checkUnitList
-            this.checkUnitType = false;
-            this.checkBookingUnit = false;
-        },
-        showUnitType(){
-            this.checkUnitType = !this.checkUnitType
-            this.checkBookingUnit = false;
-            this.checkUnitList = false;
-        },
-        showBookingUnit(){
-            this.checkBookingUnit = !this.checkBookingUnit
-            this.checkUnitType = false;
-            this.checkUnitList = false;
-        }
+      showUnitList() {
+        this.checkUnitList = !this.checkUnitList;
+        this.checkUnitType = false;
+        this.checkBookingUnit = false;
+      },
+      showUnitType() {
+        this.checkUnitType = !this.checkUnitType;
+        this.checkBookingUnit = false;
+        this.checkUnitList = false;
+      },
+      showBookingUnit() {
+        this.checkBookingUnit = !this.checkBookingUnit;
+        this.checkUnitType = false;
+        this.checkUnitList = false;
+      }
+    },
+    computed: {
+      filteredUnitTypes() {
+        const query = this.searchQuery.toLowerCase();
+        return this.unitTypes.filter(unitType => {
+          return (
+            unitType['Unit Type ID'].toString().includes(query) ||
+            unitType['Unit Type Code'].toLowerCase().includes(query) ||
+            unitType['Unit Type Description'].toLowerCase().includes(query)
+          );
+        });
+      },
+      filteredBookingUnits() {
+        const query = this.searchQuery.toLowerCase();
+        return Object.keys(this.bookingUnits).reduce((result, unitTypeId) => {
+          const filteredUnits = this.bookingUnits[unitTypeId].filter(unit => {
+            return (
+              unit['Booking Unit ID'].toString().includes(query) ||
+              unit['Booking Unit Name'].toLowerCase().includes(query)
+            );
+          });
+          if (filteredUnits.length > 0) {
+            result[unitTypeId] = filteredUnits;
+          }
+          return result;
+        }, {});
+      }
     },
     async created() {
       try {
@@ -124,12 +158,12 @@
         }, {});
       } catch (error) {
         toast("Error fetching data", {
-                "theme": "dark",
-                "type": "error",
-                "dangerouslyHTMLString": true,
-                autoClose: 2000,
-                position: toast.POSITION.BOTTOM_CENTER,
-            })
+          "theme": "dark",
+          "type": "error",
+          "dangerouslyHTMLString": true,
+          autoClose: 2000,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
       }
     },
   };

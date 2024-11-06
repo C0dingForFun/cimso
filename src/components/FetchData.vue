@@ -5,8 +5,8 @@
       <div class="mt-2">
         <button @click="showUnitList()">Show Unit List</button> <button @click="showUnitType()">Show Unit Types</button> <button @click="showBookingUnit()">Show Booking Unit</button> 
       </div>
-
-        <ul class="mt-2" v-show="checkUnitList" >
+      
+        <ul class="mt-4 unitList" v-show="checkUnitList">
             <li v-for="unitType in unitTypes" :key="unitType['Unit Type ID']">
                 <h2>{{ unitType['Unit Type Description'] }} ({{ unitType['Unit Type Code'] }})</h2>
                 <p>Category: {{ unitType['Unit Type Category'] }}</p>
@@ -14,8 +14,8 @@
                 <p>Marketing Description: {{ unitType['Marketing Description'] }}</p>
                 <p>Units Available: {{ unitType['Unit Count'] }}</p>
             
-                <ul>
-                    <li v-for="unit in bookingUnits[unitType['Unit Type ID']] || []" :key="unit['Booking Unit ID']">
+                <ul >
+                    <li class="bookingUnit" v-for="unit in bookingUnits[unitType['Unit Type ID']] || []" :key="unit['Booking Unit ID']">
                     <p>Booking Unit Name: {{ unit['Booking Unit Name'] }}</p>
                     <p>Room Number: {{ unit['Booking Unit Number'] }}</p>
                     </li>
@@ -139,19 +139,34 @@
     h1 {
         font-size: 2em;
     }
-    ul {
+    .unitList{
         list-style: none;
         padding: 0;
+        width:95vw;
+        margin:auto;
+    }
+    .bookingUnit{
+        width:90vw;
+        list-style: none;
     }
     li {
+        width:95vw;
         margin-bottom: 1em;
         padding: 1em;
-        border: 1px solid rgb(190, 215, 57);
+        border: 3px solid rgb(190, 215, 57);
         border-radius: 5px;
+        background-color: rgb(44, 44, 44);
+        color:aliceblue;
+    }
+    table{
+        margin:auto;
+        width:95vw;
     }
     table td {
         padding: 0.5rem;
         border: 2px solid rgb(190, 215, 57);
+        background-color: rgb(44, 44, 44);
+        color:aliceblue;
     }
     table th {
         padding: 0.5rem;

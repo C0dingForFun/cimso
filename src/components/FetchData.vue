@@ -81,7 +81,6 @@
   
   <script>
   import { getUnitTypes, getBookingUnits } from '../store/index.js';
-//   import SpinnerComp from '../components/SpinnerComp.vue'
   import { toast } from "vue3-toastify";
   import "vue3-toastify/dist/index.css";
   
@@ -155,7 +154,6 @@
   
         this.unitTypes = unitTypesData;
   
-        // Organizing booking units by Unit Type ID
         this.bookingUnits = bookingUnitsData.reduce((book, unit) => {
           if (!book[unit['Unit Type ID']]) {
             book[unit['Unit Type ID']] = [];

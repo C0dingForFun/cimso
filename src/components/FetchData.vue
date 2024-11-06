@@ -3,7 +3,7 @@
         <router-link to="/" class="my-4 back" data-aos="fade-right">Back to Home</router-link>
       <h1 class="mt-5" data-aos="fade-right">CiMSO INNterchange</h1>
       <div class="my-2" data-aos="fade-right" data-aos-delay="200">
-          <input type="text" placeholder="Search by Unit Type ID or Unit Type Description..." v-model="searchUnit" class="mx-2 my-2"/>
+          <input type="text" placeholder="Search by Unit Type ID, Unit Type Description or Unit Type Code..." v-model="searchUnit" class="mx-2 my-2"/>
       </div>
       
       <div class="mt-2" data-aos="fade-right">

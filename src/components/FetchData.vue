@@ -6,9 +6,9 @@
       <button class="send my-2">Send</button>
       
       <div class="mt-2">
-        <button @click="showUnitList()">Show Unit List</button> 
-        <button @click="showUnitType()">Show Unit Types</button> 
-        <button @click="showBookingUnit()">Show Booking Unit</button> 
+        <button class="mx-2" @click="showUnitList()">Show Unit List</button> 
+        <button class="mx-2" @click="showUnitType()">Show Unit Types</button> 
+        <button class="mx-2" @click="showBookingUnit()">Show Booking Unit</button> 
       </div>
       
       <!-- Unit List -->
@@ -124,20 +124,22 @@
         });
       },
       filteredBookingUnits() {
-        const query = this.searchQuery.toLowerCase();
-        return Object.keys(this.bookingUnits).reduce((result, unitTypeId) => {
-          const filteredUnits = this.bookingUnits[unitTypeId].filter(unit => {
-            return (
-              unit['Booking Unit ID'].toString().includes(query) ||
-              unit['Booking Unit Name'].toLowerCase().includes(query)
-            );
-          });
-          if (filteredUnits.length > 0) {
-            result[unitTypeId] = filteredUnits;
-          }
-          return result;
-        }, {});
+    const query = this.searchQuery.toLowerCase();
+    return Object.keys(this.bookingUnits).reduce((result, unitTypeId) => {
+      const filteredUnits = this.bookingUnits[unitTypeId].filter(unit => {
+        // Convert the Booking Unit ID to a string before comparison
+        return (
+          unit['Booking Unit ID'].toString().includes(query) || 
+          unit['Booking Unit Name'].toLowerCase().includes(query)
+        );
+      });
+
+      if (filteredUnits.length > 0) {
+        result[unitTypeId] = filteredUnits;
       }
+      return result;
+    }, {});
+  }
     },
     async created() {
       try {
@@ -186,7 +188,7 @@
     li {
         width:95vw;
         margin-bottom: 1em;
-        padding: 1em;
+        /* padding: 1em; */
         border: 3px solid rgb(190, 215, 57);
         border-radius: 5px;
         background-color: rgb(44, 44, 44);
@@ -240,7 +242,7 @@
         color:aliceblue;
     }
     button{
-        width:200px;
+        width:187px;
         padding:0.5em;
         background-color:aliceblue;
         color:gray;

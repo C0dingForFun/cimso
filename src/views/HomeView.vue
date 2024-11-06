@@ -4,7 +4,7 @@
       <div class="request" data-aos="fade-right" data-aos-duration="1000">
         <h1 class="display-4" data-aos="fade-right" data-aos-delay="600">Welcome To CiMSO INNterchange</h1>
         <div class="mt-5" data-aos="fade-right" data-aos-delay="800">
-          <router-link to="/singleView">Request Units</router-link>
+          <router-link to="/innterchange">Request Units</router-link>
         </div>
       </div>
     </div>

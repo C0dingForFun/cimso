@@ -23,7 +23,7 @@
             </li>
           </ul>
 
-      <table class="table mt-2 unit-type-table" v-show="checkUnitType"> 
+      <table class="table mt-4 unit-type-table" v-show="checkUnitType"> 
         <thead class="table-dark">
             <tr>
                 <th>Unit Type ID</th>
@@ -48,7 +48,7 @@
         </tbody>
       </table>
  
-      <table class="table mt-2 booking-unit-table" v-show="checkBookingUnit"> 
+      <table class="table mt-4 booking-unit-table" v-show="checkBookingUnit"> 
         <thead class="table-dark">
             <tr>
                 <th>Booking Unit ID</th>
@@ -114,7 +114,7 @@
   
         this.unitTypes = unitTypesData;
   
-        // Organize booking units by Unit Type ID for easy access
+        // Organizing booking units by Unit Type ID
         this.bookingUnits = bookingUnitsData.reduce((book, unit) => {
           if (!book[unit['Unit Type ID']]) {
             book[unit['Unit Type ID']] = [];
@@ -161,6 +161,8 @@
     table{
         margin:auto;
         width:95vw;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
     }
     table td {
         padding: 0.5rem;

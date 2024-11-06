@@ -8,9 +8,9 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/singleView',
-    name: 'singleView',
-    component: () => import( '../views/SingleView.vue')
+    path: '/innterchange',
+    name: 'inntervhange',
+    component: () => import( '../views/INNterchange.vue')
   },
   {
     path: '/fetchData',

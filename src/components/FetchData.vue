@@ -1,9 +1,9 @@
 <template>
     <div>
+        <router-link to="/" class="my-4 back">Back to Home</router-link>
       <h1 class="mt-5">CiMSO INNterchange</h1>
-      <router-link to="/" class="my-2">Back to Home</router-link>
-      <div class="mx-2 my-2">
-          <input type="text" placeholder="Search by Unit Type ID, Booking Unit ID, or Unit Type Code..." v-model="searchQuery"/>
+      <div class="my-2">
+          <input type="text" placeholder="Search by Unit Type ID, Booking Unit ID, or Unit Type Code..." v-model="searchUnit" class="mx-2 my-2"/>
       </div>
       
       <div class="mt-2">
@@ -90,7 +90,7 @@
         checkUnitList: true,
         checkUnitType: false,
         checkBookingUnit: false,
-        searchQuery: '',
+        searchUnit: '',
       };
     },
     components: {
@@ -115,7 +115,7 @@
     },
     computed: {
       filteredUnitTypes() {
-        const query = this.searchQuery.toLowerCase();
+        const query = this.searchUnit.toLowerCase();
         return this.unitTypes.filter(unitType => {
           return (
             unitType['Unit Type ID'].toString().includes(query) ||
@@ -125,7 +125,7 @@
         });
       },
       filteredBookingUnits() {
-    const query = this.searchQuery.toLowerCase();
+    const query = this.searchUnit.toLowerCase();
     return Object.keys(this.bookingUnits).reduce((result, unitTypeId) => {
       const filteredUnits = this.bookingUnits[unitTypeId].filter(unit => {
         // Convert the Booking Unit ID to a string before comparison
@@ -175,6 +175,9 @@
   <style scoped>
     h1 {
         font-size: 2em;
+    }
+    .back{
+        position: absolute;
     }
     .unitList{
         list-style: none;

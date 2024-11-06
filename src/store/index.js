@@ -34,11 +34,11 @@ export const getBookingUnits = async () => {
 
 export const getImage = async () => {
   const response = await axios.post(
-    `${cimso_API}/get_booking_units_request`,
+    `${cimso_API}/binary_object_request`,
     { hg_code: "demo", payload: {} },
     { headers }
   );
-  return response.data.payload["Booking Units"];
+  return response.data.payload["Object uniq"];
 };
 
 export default createStore({

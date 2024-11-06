@@ -26,13 +26,13 @@
       <table class="table mt-4 unit-type-table" v-show="checkUnitType"> 
         <thead class="table-dark">
             <tr>
-                <th>Unit Type ID</th>
+                <th style="border-top-left-radius: 10px;">Unit Type ID</th>
                 <th>Unit Type Description</th>
                 <th>Unit Type Code</th>
                 <th>Unit Type Category'</th>
                 <th>Maximum Occupants</th>
                 <th>Marketing Description</th>
-                <th>Unit Count</th>
+                <th style="border-top-right-radius: 10px;">Unit Count</th>
             </tr>
         </thead>
         <tbody>
@@ -51,9 +51,9 @@
       <table class="table mt-4 booking-unit-table" v-show="checkBookingUnit"> 
         <thead class="table-dark">
             <tr>
-                <th>Booking Unit ID</th>
+                <th style="border-top-left-radius: 10px;">Booking Unit ID</th>
                 <th>Booking Unit Name</th>
-                <th>Booking Unit Number</th>
+                <th style="border-top-right-radius: 10px;">Booking Unit Number</th>
             </tr>
         </thead>
         <tbody  v-for="unitType in unitTypes" :key="unitType['Unit Type ID']">
@@ -161,8 +161,6 @@
     table{
         margin:auto;
         width:95vw;
-        border-top-right-radius: 20px;
-        border-top-left-radius: 20px;
     }
     table td {
         padding: 0.5rem;

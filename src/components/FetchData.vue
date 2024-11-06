@@ -151,10 +151,10 @@
           getUnitTypes(),
           getBookingUnits(),
         ]);
-        
-        console.log(getUnitTypes());
-        
+  
+        console.log(this.unitTypes);
         this.unitTypes = unitTypesData;
+        
   
         this.bookingUnits = bookingUnitsData.reduce((book, unit) => {
           if (!book[unit['Unit Type ID']]) {
@@ -164,8 +164,6 @@
           return book;
         }, {});
       } catch (error) {
-        console.log(error);
-        
         toast("Error fetching data", {
           "theme": "dark",
           "type": "error",

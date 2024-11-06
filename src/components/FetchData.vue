@@ -209,7 +209,7 @@
         border: 2px solid rgb(190, 215, 57);
     }
     input{
-        width:200px;
+        width:50vw;
         border-radius:20px ;
         padding:0.3em;
     }

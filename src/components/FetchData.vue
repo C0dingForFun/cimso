@@ -65,10 +65,10 @@
           </tr>
         </thead>
         <tbody v-for="unitType in filteredUnitTypes" :key="unitType['Unit Type ID']">
-          <tr v-for="unit in filteredBookingUnits[unitType['Unit Type ID']] || []" :key="unit['Booking Unit ID']">
-            <td>{{ unit['Booking Unit ID']}}</td>
-            <td>{{ unit['Booking Unit Name'] }}</td>
-            <td>{{ unit['Booking Unit Number'] }}</td>
+          <tr v-for="bookingUnit in filteredBookingUnits[unitType['Unit Type ID']] || []" :key="bookingUnit['Booking Unit ID']">
+            <td>{{ bookingUnit['Booking Unit ID']}}</td>
+            <td>{{ bookingUnit['Booking Unit Name'] }}</td>
+            <td>{{ bookingUnit['Booking Unit Number'] }}</td>
           </tr>
         </tbody>
       </table>

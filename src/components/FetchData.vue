@@ -1,12 +1,12 @@
 <template>
     <div>
-        <router-link to="/" class="my-4 back">Back to Home</router-link>
-      <h1 class="mt-5">CiMSO INNterchange</h1>
-      <div class="my-2">
-          <input type="text" placeholder="Search by Unit Type ID, Booking Unit ID, or Unit Type Code..." v-model="searchUnit" class="mx-2 my-2"/>
+        <router-link to="/" class="my-4 back" data-aos="fade-right">Back to Home</router-link>
+      <h1 class="mt-5" data-aos="fade-right">CiMSO INNterchange</h1>
+      <div class="my-2" data-aos="fade-right" data-aos-delay="200">
+          <input type="text" placeholder="Search by Unit Type ID or Unit Type Description..." v-model="searchUnit" class="mx-2 my-2"/>
       </div>
       
-      <div class="mt-2">
+      <div class="mt-2" data-aos="fade-right">
         <button class="mx-2" @click="showUnitList()">Show Unit List</button> 
         <button class="mx-2" @click="showUnitType()">Show Unit Types</button> 
         <button class="mx-2" @click="showBookingUnit()">Show Booking Unit</button> 
@@ -21,7 +21,8 @@
           <p>Marketing Description: {{ unitType['Marketing Description'] }}</p>
           <p>Units Available: {{ unitType['Unit Count'] }}</p>
           
-          <ul>
+          <button @click="showBookingUnit_List()" class="bookingUnit_List">Available Booking Units</button>
+          <ul v-show="checkBookingUnit_List">
             <li class="bookingUnit" v-for="unit in filteredBookingUnits[unitType['Unit Type ID']] || []" :key="unit['Booking Unit ID']">
               <p>Booking Unit Name: {{ unit['Booking Unit Name'] }}</p>
               <p>Room Number: {{ unit['Booking Unit Number'] }}</p>
@@ -63,6 +64,7 @@
             <th>Booking Unit ID</th>
             <th>Booking Unit Name</th>
             <th>Booking Unit Number</th>
+            <th>Unit Type ID</th>
           </tr>
         </thead>
         <tbody v-for="unitType in filteredUnitTypes" :key="unitType['Unit Type ID']">
@@ -70,6 +72,7 @@
             <td>{{ bookingUnit['Booking Unit ID']}}</td>
             <td>{{ bookingUnit['Booking Unit Name'] }}</td>
             <td>{{ bookingUnit['Booking Unit Number'] }}</td>
+            <td>{{ unitType['Unit Type ID'] }}</td>
           </tr>
         </tbody>
       </table>
@@ -90,6 +93,7 @@
         checkUnitList: true,
         checkUnitType: false,
         checkBookingUnit: false,
+        checkBookingUnit_List:false,
         searchUnit: '',
       };
     },
@@ -108,10 +112,13 @@
         this.checkBookingUnit = !this.checkBookingUnit;
         this.checkUnitType = false;
         this.checkUnitList = false;
+      },
+      showBookingUnit_List(){
+        this.checkBookingUnit_List = !this.checkBookingUnit_List
       }
     },
     computed: {
-      filteredUnitTypes() {
+    filteredUnitTypes() {
         const query = this.searchUnit.toLowerCase();
         return this.unitTypes.filter(unitType => {
           return (
@@ -121,7 +128,7 @@
           );
         });
       },
-      filteredBookingUnits() {
+    filteredBookingUnits() {
     const query = this.searchUnit.toLowerCase();
     return Object.keys(this.bookingUnits).reduce((result, unitTypeId) => {
       const filteredUnits = this.bookingUnits[unitTypeId].filter(unit => {
@@ -187,6 +194,11 @@
     .bookingUnit{
         width:90vw;
         list-style: none;
+    }
+    .bookingUnit_List{
+        width:200px;
+        padding:0.6em;
+        margin-bottom:10px;
     }
     li{
         width:95vw;

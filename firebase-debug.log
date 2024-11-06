@@ -1,0 +1,50 @@
+[debug] [2024-11-06T12:53:29.959Z] ----------------------------------------------------------------------
+[debug] [2024-11-06T12:53:29.962Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\gwiba\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2024-11-06T12:53:29.963Z] CLI Version:   13.18.0
+[debug] [2024-11-06T12:53:29.963Z] Platform:      win32
+[debug] [2024-11-06T12:53:29.963Z] Node Version:  v22.8.0
+[debug] [2024-11-06T12:53:29.963Z] Time:          Wed Nov 06 2024 14:53:29 GMT+0200 (South Africa Standard Time)
+[debug] [2024-11-06T12:53:29.964Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-11-06T12:53:29.969Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2024-11-06T12:53:30.055Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-11-06T12:53:30.056Z] > authorizing via signed-in user (gwibantulini8@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\gwiba\OneDrive\Documents\cismo
+
+[debug] [2024-11-06T12:53:30.812Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2024-11-06T12:53:30.812Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2024-11-06T12:54:08.459Z] > refreshing access token with scopes: []
+[debug] [2024-11-06T12:54:08.460Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-11-06T12:54:08.460Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-11-06T12:54:08.917Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2024-11-06T12:54:08.917Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-11-06T12:54:08.925Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2024-11-06T12:54:09.689Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2024-11-06T12:54:09.689Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project cimso-81ee5 (CiMSO) 
+[info] 
+=== Hosting Setup
+[debug] [2024-11-06T12:54:13.491Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cimso-81ee5 [none]
+[debug] [2024-11-06T12:54:13.883Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cimso-81ee5 200
+[debug] [2024-11-06T12:54:13.883Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cimso-81ee5 {"projectId":"cimso-81ee5","projectNumber":"779996746457","displayName":"CiMSO","name":"projects/cimso-81ee5","resources":{"hostingSite":"cimso-81ee5"},"state":"ACTIVE","etag":"1_b2bf5253-d615-494f-96eb-8a898d2c2965"}
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 

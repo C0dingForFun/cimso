@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="innerchange">
       <FetchData />
   </div>
 </template>
@@ -14,9 +14,5 @@ export default {
 };
 </script>
 
-<style>
-#app {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-}
+<style scoped>
 </style>

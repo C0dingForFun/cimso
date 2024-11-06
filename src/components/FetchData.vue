@@ -1,10 +1,28 @@
 <template>
     <div>
-      <h1>CiMSO INNterchange</h1>
-      <input type="text" size="40" placeholder="Request Here..." v-model="search"/><button class="send">Send</button>
+      <h1 class="mt-5">CiMSO INNterchange</h1>
+      <router-link to="/">Back</router-link><input type="text" size="40" placeholder="Request Here..." v-model="search"/><button class="send">Send</button>
       <div class="mt-2">
-        <button @click="showUnitType()">Show Unit List</button> <button @click="showUnitType()">Show Unit Types</button> <button @click="showBookingUnit()">Show Booking Unit</button> 
+        <button @click="showUnitList()">Show Unit List</button> <button @click="showUnitType()">Show Unit Types</button> <button @click="showBookingUnit()">Show Booking Unit</button> 
       </div>
+
+    <ul class="mt-2" v-show="checkUnitList">
+      <li v-for="unitType in unitTypes" :key="unitType['Unit Type ID']">
+        <h2>{{ unitType['Unit Type Description'] }} ({{ unitType['Unit Type Code'] }})</h2>
+        <p>Category: {{ unitType['Unit Type Category'] }}</p>
+        <p>Max Occupants: {{ unitType['Maximum Occupants'] }}</p>
+        <p>Marketing Description: {{ unitType['Marketing Description'] }}</p>
+        <p>Units Available: {{ unitType['Unit Count'] }}</p>
+
+        <ul>
+          <li v-for="unit in bookingUnits[unitType['Unit Type ID']] || []" :key="unit['Booking Unit ID']">
+            <p>Booking Unit Name: {{ unit['Booking Unit Name'] }}</p>
+            <p>Room Number: {{ unit['Booking Unit Number'] }}</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
       <table class="table mt-2 unit-type-table" v-show="checkUnitType"> 
         <thead class="table-dark">
             <tr>
@@ -46,14 +64,7 @@
             </tr>
         </tbody>
       </table>  
-          <!-- <ul>
-            <li v-for="unit in bookingUnits[unitType['Unit Type ID']] || []" :key="unit['Booking Unit ID']">
-              <p>Booking Unit Name: {{ unit['Booking Unit Name'] }}</p>
-              <p>Room Number: {{ unit['Booking Unit Number'] }}</p>
-            </li>
-          </ul> -->
-        <!-- </li>
-      </ul> -->
+      
     </div>
   </template>
   
@@ -67,7 +78,7 @@
       return {
         unitTypes: [],
         bookingUnits: {},
-        checkUnitList:false,
+        checkUnitList:true,
         checkUnitType:false,
         checkBookingUnit:false,
         search:''
@@ -123,11 +134,16 @@
   <style scoped>
     h1 {
         font-size: 2em;
-        margin-bottom: 1em;
     }
-    h2 {
-        font-size: 1.5em;
-        margin-top: 1em;
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 1em;
+        padding: 1em;
+        border: 1px solid rgb(190, 215, 57);
+        border-radius: 5px;
     }
     table td {
         padding: 0.5rem;
@@ -151,6 +167,21 @@
         transition:0.6s;
     }
     .send:hover{
+        cursor: pointer;
+        background-color:rgb(190, 215, 57);
+        color:aliceblue;
+    }
+    a{
+        width:250px;
+        padding:0.5em;
+        background-color:aliceblue;
+        color:gray;
+        text-decoration: none;
+        border-radius:20px;
+        border:solid 1px gray;
+        transition:0.6s;
+    }
+    a:hover{
         cursor: pointer;
         background-color:rgb(190, 215, 57);
         color:aliceblue;

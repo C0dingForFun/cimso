@@ -2,7 +2,7 @@
     <div>
       <h1 class="mt-5">CiMSO INNterchange</h1>
       <router-link to="/" class="my-2">Back to Home</router-link>
-      <input type="text" size="40" placeholder="Search by Unit Type ID, Booking Unit ID, or Unit Type Code..." v-model="searchQuery" class="mx-2 my-2"/>
+      <input type="text" placeholder="Search by Unit Type ID, Booking Unit ID, or Unit Type Code..." v-model="searchQuery" class="mx-2 my-2"/>
       <button class="send my-2">Send</button>
       
       <div class="mt-2">
@@ -209,6 +209,7 @@
         border: 2px solid rgb(190, 215, 57);
     }
     input{
+        width:200px;
         border-radius:20px ;
         padding:0.3em;
     }

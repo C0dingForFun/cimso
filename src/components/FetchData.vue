@@ -1,7 +1,7 @@
 <template>
     <div>
       <h1 class="mt-5">CiMSO INNterchange</h1>
-      <router-link to="/">Back</router-link><input type="text" size="40" placeholder="Request Here..." v-model="search"/><button class="send">Send</button>
+      <router-link to="/">Back to Home</router-link><input type="text" size="40" placeholder="Request Here..." v-model="search" class="mx-2"/><button class="send">Send</button>
       <div class="mt-2">
         <button @click="showUnitList()">Show Unit List</button> <button @click="showUnitType()">Show Unit Types</button> <button @click="showBookingUnit()">Show Booking Unit</button> 
       </div>
@@ -70,6 +70,7 @@
   
   <script>
   import { getUnitTypes, getBookingUnits } from '../store/index.js';
+  import SpinnerComp from '../components/SpinnerComp.vue'
   import { toast } from "vue3-toastify";
   import "vue3-toastify/dist/index.css";
   

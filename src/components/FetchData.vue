@@ -13,8 +13,7 @@
       </div>
       
       <!-- Unit List -->
-       <div v-if="checkUnitList">
-        <ul class="mt-4 unitList" v-show="checkUnitList" >
+      <ul class="mt-4 unitList" v-show="checkUnitList" v-if="checkUnitList">
         <li v-for="unitType in filteredUnitTypes" :key="unitType['Unit Type ID']">
           <h2>{{ unitType['Unit Type Description'] }} ({{ unitType['Unit Type Code'] }})</h2>
           <p>Category: {{ unitType['Unit Type Category'] }}</p>
@@ -30,10 +29,6 @@
           </ul>
         </li>
       </ul>
-       </div>
-      <div v-else>
-        <SpinnerComp/>
-      </div>
   
       <!-- Unit Type Table -->
       <table class="table mt-4 unit-type-table" v-show="checkUnitType">

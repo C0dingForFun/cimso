@@ -22,7 +22,6 @@
                 </ul>
             </li>
           </ul>
-        </div>
 
       <table class="table mt-2 unit-type-table" v-show="checkUnitType"> 
         <thead class="table-dark">

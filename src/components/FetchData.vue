@@ -177,7 +177,10 @@
         font-size: 2em;
     }
     .back{
-        position: absolute;
+        position: fixed;
+        top:0;
+        left:0;
+        z-index:2;
     }
     .unitList{
         list-style: none;
@@ -189,7 +192,7 @@
         width:90vw;
         list-style: none;
     }
-    li {
+    li{
         width:95vw;
         margin-bottom: 1em;
         /* padding: 1em; */
@@ -213,7 +216,7 @@
         border: 2px solid rgb(190, 215, 57);
     }
     input{
-        width:200px;
+        width:39vw;
         border-radius:20px ;
         padding:0.3em;
     }
@@ -232,7 +235,7 @@
         color:aliceblue;
     }
     a{
-        width:200px;
+        width:170px;
         padding:0.6em;
         background-color:aliceblue;
         color:gray;
@@ -260,6 +263,8 @@
         background-color:rgb(190, 215, 57);
         color:aliceblue;
     }
+
+/* Responsive Styles for Unit Types Table */
     @media (max-width: 768px) {
     .unit-type-table {
       width: 100%;
@@ -291,34 +296,28 @@
       border-bottom: 0;
     }
     .unit-type-table td:nth-child(1):before {
-      content: "UserID";
+      content: "Unit Type ID";
     }
     .unit-type-table td:nth-child(2):before {
-      content: "User Name";
+      content: "Unit Type Description";
     }
     .unit-type-table td:nth-child(3):before {
-      content: "Quantity";
+      content: "Unit Type Code";
     }
     .unit-type-table td:nth-child(4):before {
-      content: "Amount";
+      content: "Unit Type Category";
     }
     .unit-type-table td:nth-child(5):before {
-      content: "Category";
+      content: "Maximum Occupants";
     }
     .unit-type-table td:nth-child(6):before {
-      content: "Product URL";
+      content: "Marketing Description";
     }
     .unit-type-table td:nth-child(7):before {
-      content: "Action";
-    }
-    .unit-type-table td:nth-child(8):before {
-      content: "Action";
-    }
-    .unit-type-table td:nth-child(9):before {
-      content: "Action";
+      content: "Unit Count";
     }
   }
-  /* Responsive Styles for Products Table */
+  /* Responsive Styles for Booking Units Table */
   @media (max-width: 768px) {
     .booking-unit-table {
       width: 100%;
@@ -350,14 +349,27 @@
       border-bottom: 0;
     }
     .booking-unit-table td:nth-child(1):before {
-      content: "Product ID";
+      content: "Booking Unit ID";
     }
     .booking-unit-table td:nth-child(2):before {
-      content: "Product Name";
+      content: "Booking Unit Name";
     }
     .booking-unit-table td:nth-child(3):before {
-      content: "Quantity";
+      content: "Booking Unit Number";
     }
   }
+
+/* Responsive Style for Back To Home button and List*/
+@media (max-width: 768px) {
+    a{
+        width:150px;
+        padding:0.1em;
+        margin-bottom:10px;
+    }
+    .bookingUnit{
+        /* width:90vw; */
+        margin-bottom: 1em;
+    }  
+}
   </style>
   

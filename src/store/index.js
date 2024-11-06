@@ -32,14 +32,14 @@ export const getBookingUnits = async () => {
   return response.data.payload["Booking Units"];
 };
 
-export const getImage = async () => {
-  const response = await axios.post(
-    `${cimso_API}/binary_object_request`,
-    { hg_code: "demo", payload: {} },
-    { headers }
-  );
-  return response.data.payload["Object uniq"];
-};
+// export const getImage = async () => {
+//   const response = await axios.post(
+//     `${cimso_API}/binary_object_request`,
+//     { hg_code: "demo", payload: {} },
+//     { headers }
+//   );
+//   return response.data.payload["Object Unique ID"];
+// };
 
 export default createStore({
   state: {

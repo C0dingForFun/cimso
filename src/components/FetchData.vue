@@ -13,7 +13,7 @@
       </div>
       
       <!-- Unit List -->
-      <ul class="mt-4 unitList" v-show="checkUnitList" v-if="checkUnitList">
+      <ul class="mt-4 unitList" v-show="checkUnitList">
         <li v-for="unitType in filteredUnitTypes" :key="unitType['Unit Type ID']">
           <h2>{{ unitType['Unit Type Description'] }} ({{ unitType['Unit Type Code'] }})</h2>
           <p>Category: {{ unitType['Unit Type Category'] }}</p>
@@ -78,7 +78,6 @@
   
   <script>
   import { getUnitTypes, getBookingUnits } from '../store/index.js';
-  import SpinnerComp from '../components/SpinnerComp.vue'
   import { toast } from "vue3-toastify";
   import "vue3-toastify/dist/index.css";
   

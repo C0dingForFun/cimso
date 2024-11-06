@@ -78,6 +78,7 @@
   
   <script>
   import { getUnitTypes, getBookingUnits } from '../store/index.js';
+//   import SpinnerComp from '../components/SpinnerComp.vue'
   import { toast } from "vue3-toastify";
   import "vue3-toastify/dist/index.css";
   
@@ -91,9 +92,6 @@
         checkBookingUnit: false,
         searchUnit: '',
       };
-    },
-    components: {
-      SpinnerComp
     },
     methods: {
       showUnitList() {
@@ -179,7 +177,6 @@
         position: fixed;
         top:0;
         left:0;
-        z-index:2;
     }
     .unitList{
         list-style: none;
@@ -365,8 +362,8 @@
         padding:0.1em;
         margin-bottom:10px;
     }
-    .bookingUnit{
-        /* width:90vw; */
+    li{
+        /* width:95vw; */
         margin-bottom: 1em;
     }  
 }

@@ -172,8 +172,8 @@
         color:aliceblue;
     }
     a{
-        width:250px;
-        padding:0.5em;
+        width:200px;
+        padding:0.6em;
         background-color:aliceblue;
         color:gray;
         text-decoration: none;

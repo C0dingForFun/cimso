@@ -1,7 +1,7 @@
 <template>
     <div>
       <h1 class="mt-5">CiMSO INNterchange</h1>
-      <router-link to="/">Back to Home</router-link><input type="text" size="40" placeholder="Request Here..." v-model="search" class="mx-2"/><button class="send">Send</button>
+      <router-link to="/" class="my-2">Back to Home</router-link><input type="text" size="40" placeholder="Request Here..." v-model="search" class="mx-2 my-2"/><button class="send my-2">Send</button>
       <div class="mt-2">
         <button @click="showUnitList()">Show Unit List</button> <button @click="showUnitType()">Show Unit Types</button> <button @click="showBookingUnit()">Show Booking Unit</button> 
       </div>
@@ -26,13 +26,13 @@
       <table class="table mt-4 unit-type-table" v-show="checkUnitType"> 
         <thead class="table-dark">
             <tr>
-                <th style="border-top-left-radius: 10px;">Unit Type ID</th>
+                <th>Unit Type ID</th>
                 <th>Unit Type Description</th>
                 <th>Unit Type Code</th>
                 <th>Unit Type Category'</th>
                 <th>Maximum Occupants</th>
                 <th>Marketing Description</th>
-                <th style="border-top-right-radius: 10px;">Unit Count</th>
+                <th>Unit Count</th>
             </tr>
         </thead>
         <tbody>
@@ -51,9 +51,9 @@
       <table class="table mt-4 booking-unit-table" v-show="checkBookingUnit"> 
         <thead class="table-dark">
             <tr>
-                <th style="border-top-left-radius: 10px;">Booking Unit ID</th>
+                <th>Booking Unit ID</th>
                 <th>Booking Unit Name</th>
-                <th style="border-top-right-radius: 10px;">Booking Unit Number</th>
+                <th>Booking Unit Number</th>
             </tr>
         </thead>
         <tbody  v-for="unitType in unitTypes" :key="unitType['Unit Type ID']">
